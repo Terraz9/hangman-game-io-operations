@@ -7,18 +7,6 @@ module ManageFiles
   DIRECTORY = 'data'
   FILENAME = 'data/save_game.yml'
 
-  def save_game?
-    loop do
-      message_save_game
-      input = gets.chomp.upcase
-
-      return true if input == 'Y'
-      return false if input == 'N'
-
-      puts 'Not Valid'
-    end
-  end
-
   def save_game
     Dir.mkdir(DIRECTORY) unless Dir.exist?(DIRECTORY)
     game_state = {

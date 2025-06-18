@@ -19,25 +19,24 @@ class Gameplay
     message_start_game
     loop do
       game_round
-      should_continue = finish_game
+      should_continue = finish_game?
       break unless should_continue
     end
   end
 
   def game_round
     board.show_current_guess
-    letter = player.pick_letter
-    board.update_current_guess(letter)
+    player.player_turn(board)
   end
 
-  def finish_game
-    if board.save_game?
-      board.save_game
+  def finish_game?
+    if player.a_save?
       return false
     elsif board.game_over?
       board.pick_winner
       return false
     end
+
     true
   end
 end
