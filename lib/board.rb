@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'manage_files'
 require_relative 'winning_conditions'
 require 'pry-byebug'
 # Holds the creation of the random word, shows the underscore, and determines if there is a winner or not
@@ -7,6 +8,7 @@ class Board
   attr_reader :possible_words, :word_to_guess
   attr_accessor :current_guess, :counter_to_lose
 
+  include ManageFiles
   include WinningConditions
   def initialize
     @possible_words = list_of_possibilities

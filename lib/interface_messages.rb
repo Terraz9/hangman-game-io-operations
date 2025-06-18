@@ -13,10 +13,10 @@ You will have 8 tries to guess the word and win!'
   end
 
   def message_save_game
-    puts 'Would you like to save the game?'
+    puts 'Y/n Would you like to save the game?'
   end
 
   def message_load_game
-    puts 'Would you like to load an old game?'
+    puts 'Y/n Would you like to load an old game?'
   end
 end
