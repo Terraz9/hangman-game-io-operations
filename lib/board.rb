@@ -3,18 +3,21 @@
 require_relative 'manage_files'
 require_relative 'winning_conditions'
 require 'pry-byebug'
+require 'yaml'
+
 # Holds the creation of the random word, shows the underscore, and determines if there is a winner or not
 class Board
-  attr_reader :possible_words, :word_to_guess
-  attr_accessor :current_guess, :counter_to_lose
+  attr_reader :possible_words
+  attr_accessor :current_guess, :counter_to_lose, :word_to_guess
 
   include ManageFiles
   include WinningConditions
   def initialize
-    @possible_words = list_of_possibilities
-    @word_to_guess = random_word
-    @current_guess = word_to_underscore
-    @counter_to_lose = 0
+    if load_game?
+      update_game_variables
+    else
+      new_game
+    end
   end
 
   def show_current_guess
@@ -57,5 +60,12 @@ class Board
 
   def word_to_underscore
     word_to_guess.map { |_letter| '_' }
+  end
+
+  def new_game
+    @possible_words = list_of_possibilities
+    @word_to_guess = random_word
+    @current_guess = word_to_underscore
+    @counter_to_lose = 0
   end
 end

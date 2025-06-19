@@ -6,9 +6,6 @@ class Player
   include InterfaceMessages
   attr_accessor :current_choice
 
-  def initialize
-  end
-
   def player_turn(board)
     loop do
       ask_letter

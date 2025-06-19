@@ -9,7 +9,7 @@ You will have 8 tries to guess the word and win!'
   end
 
   def ask_letter
-    puts 'Select one letter of the alphabet A through Z. Press 1 to save the game'
+    puts 'Select one letter of the alphabet A through Z. Press 1 to save the game.'
   end
 
   def message_save_game
